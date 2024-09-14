@@ -1,6 +1,14 @@
 #include<iostream>
 using namespace std;
 
+void mostrarArreglo(int X[], int n) 
+{
+    for(int i = 0; i < n; i++) 
+	{
+        cout<< X[i] << " ";
+    }
+    cout<<endl;
+}
 void InterDirectoDer(int X[], int n)
 {
 	for(int i = 0 ; i < n - 1 ; i++)
@@ -17,11 +25,8 @@ void InterDirectoDer(int X[], int n)
 		}
 	}
 	
-	cout<<"El intercambio directo por la derecha es: "<<endl;
-	for(int i = 0 ; i < n; i++)
-	{
-		cout<<X[i]<<" ";
-	}		
+	cout<<"\nEl intercambio directo por la derecha es: "<<endl;
+	mostrarArreglo(X,  n);
 }
 void InterDirectoIzq(int X[], int n)
 {
@@ -39,11 +44,8 @@ void InterDirectoIzq(int X[], int n)
 		}
 	}
 	
-	cout<<"El intercambio directo por la izquierda es: "<<endl;
-	for(int i = 0 ; i < n; i++)
-	{
-		cout<<X[i]<<" ";
-	}
+	cout<<"\nEl intercambio directo por la izquierda es: "<<endl;
+	mostrarArreglo(X,  n);
 }
 void InterDirectoSen(int X[], int n)
 {
@@ -67,11 +69,8 @@ void InterDirectoSen(int X[], int n)
 		i++;			
 	}
 	
-	cout<<"El intercambio directo senial es: "<<endl;
-	for(int i = 0 ; i < n; i++)
-	{
-		cout<<X[i]<<" ";
-	}
+	cout<<"\nEl intercambio directo senial es: "<<endl;
+	mostrarArreglo(X,  n);
 }
 
 void InterDirectoBi(int X[], int n)
@@ -111,11 +110,8 @@ void InterDirectoBi(int X[], int n)
 			
 	}
 	
-	cout<<"El intercambio directo bidireccional: "<<endl;
-	for(int i = 0 ; i < n; i++)
-	{
-		cout<<X[i]<<" ";
-	}
+	cout<<"\nEl intercambio directo bidireccional: "<<endl;
+	mostrarArreglo(X,  n);
 
 }
 
@@ -123,62 +119,83 @@ void InterDirectoBi(int X[], int n)
 int main()
 {
 	int opc;
-	int n;
-	cout<<"Ingrese el numero de elementos del arreglo: ";
-	cin>>n;
-	int X[n];
-	cout<<"Ingrese los valores del arreglo: "<<endl;
-	for(int i = 0; i < n; i++)
-	{
-		cout<<"X["<<i+1<<"]: ";
-		cin>>X[i];
-	}
-	cout<<endl;
 
 	do{
-		cout<<"1. Intercambio directo por la derecha. "<<endl;
+		system("cls");
+		cout<<"<<<<<ORDENACION POR INTERCAMBIO DIRECTO>>>>>"<<endl;
+		cout<<"1. Intercambio directo por la derecha "<<endl;
 		cout<<"2. Intercambio directo por la izquierda "<<endl;
 		cout<<"3. Intercambio directo con senial "<<endl;
-		cout<<"4. Intercambio directo bidireccional. "<<endl;
-		cout<<"5. Salir del programa. "<<endl;
-		
+		cout<<"4. Intercambio directo bidireccional"<<endl;
+		cout<<"5. Salir del programa "<<endl;
+	
 		cout<<"Ingrese una opcion: ";
 		cin>>opc;
 		
 		switch (opc)
 		{
 			case 1: 
-				{					
+				{	
+					system("cls");	
+					int X[]={20, 14, 12, 25, 4};
+					int n=5;
+					cout<<"INTERCAMBIO DIRECTO POR LA DERECHA:"<<endl;
+					cout<<"\nArreglo original: "<<endl;
+					mostrarArreglo(X,  n);			
 					InterDirectoDer(X, n);
-					cout<<endl;			
+					cout<<endl;
+					system("pause");			
 					break;
 				}
 			case 2:
 				{
+					system("cls");
+					int X[]={4, 3, 1, 5, 6};
+					int n=5;
+					cout<<"INTERCAMBIO DIRECTO POR LA IZQUIERDA:"<<endl;
+					cout<<"\nArreglo original: "<<endl;
+					mostrarArreglo(X,  n);
 					InterDirectoIzq(X, n);
-					cout<<endl;						
+					cout<<endl;	
+					system("pause");					
 					break;					
 				}
 				case 3:
 				{
+					system("cls");
+					int X[]={20, 10, 30, 90, 50};
+					int n=5;
+					cout<<"INTERCAMBIO DIRECTO SENIAL:"<<endl;
+					cout<<"\nArreglo original: "<<endl;
+					mostrarArreglo(X,  n);
 					InterDirectoSen(X, n);
 					cout<<endl;		
+					system("pause");
 					break;		
 				}
 				case 4: 
 				{
+					system("cls");
+					int X[]={16, 13, 11, 2, 8, 20};
+					int n=6;
+					cout<<"INTERCAMBIO DIRECTO BIDIRECCIONAL:"<<endl;
+					cout<<"\nArreglo original: "<<endl;
+					mostrarArreglo(X,  n);
 					InterDirectoBi(X, n);
 					cout<<endl;	
+					system("pause");
 					break;					
 				}
 			case 5:
 				{
-					cout<<"Saliendo del programa...."<<endl;
+					cout<<"\nSaliendo del programa...."<<endl;
 					break;
 				}
 			default:
 				{
-					cout<<"Opcion invalidad"<<endl;
+					cout<<"\nOpcion invalida"<<endl;
+					system("pause");
+					
 				}
 		}
 		cout<<endl;
