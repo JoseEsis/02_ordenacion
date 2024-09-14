@@ -21,9 +21,31 @@ void InterDirectoDer(int X[], int n)
 	for(int i = 0 ; i < n; i++)
 	{
 		cout<<X[i]<<" ";
-	}	
-	
+	}		
 }
+void InterDirectoIzq(int X[], int n)
+{
+	for(int i = 0 ; i < n-1 ; i++)
+	{
+		for(int j = n-1 ; j > i ; j--)
+		{
+			if( X[j-1] > X[j])
+			{
+				int aux;
+				aux = X[j-1];
+				X[j-1] = X[j];
+				X[j] = aux;
+			}
+		}
+	}
+	
+	cout<<"El intercambio directo por la izquierda es: "<<endl;
+	for(int i = 0 ; i < n; i++)
+	{
+		cout<<X[i]<<" ";
+	}
+}
+
 
 int main()
 {
@@ -57,6 +79,13 @@ int main()
 					InterDirectoDer(X, n);
 					cout<<endl;			
 					break;
+				}
+			case 2:
+				{
+					InterDirectoIzq(X, n);
+					cout<<endl;						
+					break;				
+					
 				}
 			case 5:
 				{
