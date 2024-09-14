@@ -45,6 +45,34 @@ void InterDirectoIzq(int X[], int n)
 		cout<<X[i]<<" ";
 	}
 }
+void InterDirectoSen(int X[], int n)
+{
+	int cen = 1; 
+	int i = 0;
+	
+	while( i< n-1 and cen ==1)
+	{
+		cen = 0;
+		for(int j=0; j<n-i-1; j++)
+		{
+			if( X[j] > X[j+1])
+			{
+				int aux;
+				aux = X[j];
+				X[j] = X[j+1];
+				X[j+1] = aux;
+				cen = 1;
+			}
+		}		
+		i++;			
+	}
+	
+	cout<<"El intercambio directo senial es: "<<endl;
+	for(int i = 0 ; i < n; i++)
+	{
+		cout<<X[i]<<" ";
+	}
+}
 
 
 int main()
@@ -85,6 +113,13 @@ int main()
 					InterDirectoIzq(X, n);
 					cout<<endl;						
 					break;				
+					
+				}
+				case 3:
+				{
+					InterDirectoSen(X, n);
+					cout<<endl;		
+					break;	
 					
 				}
 			case 5:
