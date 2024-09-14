@@ -74,6 +74,51 @@ void InterDirectoSen(int X[], int n)
 	}
 }
 
+void InterDirectoBi(int X[], int n)
+{
+	int izq=0;
+	int der=n-1;
+	int k;
+	while( izq<der)
+	{
+	
+		for(int i=der; i>izq; i--)
+		{
+			if( X[i-1] > X[i])
+			{
+				int aux;
+				aux = X[i-1];
+				X[i-1] = X[i];
+				X[i] = aux;
+				k=i;
+			}
+		}
+		izq=k;
+		
+		k=izq;
+		for(int i=izq; i<der; i++)
+		{
+			if( X[i+1] < X[i])
+			{
+				int aux;
+				aux = X[i+1];
+				X[i+1] = X[i];
+				X[i] = aux;
+				k=i;
+			}
+		}
+		der=k;
+			
+	}
+	
+	cout<<"El intercambio directo bidireccional: "<<endl;
+	for(int i = 0 ; i < n; i++)
+	{
+		cout<<X[i]<<" ";
+	}
+
+}
+
 
 int main()
 {
@@ -112,15 +157,19 @@ int main()
 				{
 					InterDirectoIzq(X, n);
 					cout<<endl;						
-					break;				
-					
+					break;					
 				}
 				case 3:
 				{
 					InterDirectoSen(X, n);
 					cout<<endl;		
-					break;	
-					
+					break;		
+				}
+				case 4: 
+				{
+					InterDirectoBi(X, n);
+					cout<<endl;	
+					break;					
 				}
 			case 5:
 				{
