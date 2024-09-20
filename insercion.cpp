@@ -1,66 +1,63 @@
 #include<iostream>
 using namespace std;
 
-void mostrarArreglo(int arr[], int n) 
+void mostrarArreglo(int A[], int n) 
 {
     for(int i = 0; i < n; i++) 
 	{
-        cout<< arr[i] << " ";
-    }
-    cout<<endl;
-}
-void insercionDir(int arr[], int n){
-	int k;
-	for(int i=2;i<n;i++)
-	{
-		int aux=arr[i];
-		k=i-1;
-		while(k>0 && aux<arr[k]){
-			arr[k+1]=arr[k];
-			k=k-1;
-		}
-		arr[k+1]=aux;
-	}		  
-    cout<<"El arreglo ordenado: "<<endl;
-	for(int i = 0; i < n; i++) 
-	{
-        cout<< arr[i] << " ";
+        cout<< A[i] << " ";
     }
     cout<<endl;
 }
 
-void insercionBinaria(int arr[], int n)
+void insercionDir(int A[], int n){
+	int k;
+	for(int i = 1; i < n; i++)
+	{
+		int aux = A[i];
+		k = i - 1;
+		while(k >= 0 and aux < A[k]) { 
+			A[k + 1] = A[k];
+			k = k - 1;
+		}
+		A[k + 1] = aux;
+	}		  
+    cout<<"El arreglo ordenado por inserción directa: "<<endl;
+	mostrarArreglo(A, n);
+}
+
+
+void insercionBinaria(int A[], int n)
 {
 	int aux, izq, der;
-	for(int i=2; i<n; i++)
+	for(int i = 1; i < n; i++) 
 	{
-		aux=arr[i];
-		izq=1;
-		der=i-1;
-		while(izq<=der)
+		aux = A[i];
+		izq = 0;
+		der = i - 1;
+
+		while(izq <= der)
 		{
-			int m=izq+der/2;
-			if(aux<arr[m])
+			int m = izq + (der - izq) / 2;
+			if(aux < A[m])
 			{
-				der=m;
+				der = m - 1;
 			}
 			else
 			{
-				izq=m+1;
+				izq = m + 1;
 			}
 		}
-		int j;
-		j=i-1;
-		while(j>=izq)
+
+		for(int j = i - 1; j >= izq; j--) 
 		{
-			arr[j+1]=arr[j];
-			j=j-1;
+			A[j + 1] = A[j];
 		}
-		arr[izq]=aux;
+		A[izq] = aux;
 	}
 	
-	cout<<"El arreglo ordenado: "<<endl;
-	mostrarArreglo(arr,  n);
+	cout<<"El arreglo ordenado por insercion binaria: "<<endl;
+	mostrarArreglo(A, n);
 }
 
 int main()
@@ -81,25 +78,26 @@ int main()
 			case 1: 
 				{	
 					system("cls");	
-					int arr[]={20, 14, 12, 25, 4};
-					int n=5;
+					int A[]={20, 14, 12, 25, 4};
+					int n = 5;
+					cout<<"INSERCION DIRECTA:"<<endl;
 					cout<<"\nArreglo original: "<<endl;
-					mostrarArreglo(arr,  n);
+					mostrarArreglo(A,  n);
 					cout<<endl;					
-					insercionDir(arr, n);			
+					insercionDir(A, n);			
 					system("pause");			
 					break;
 				}
 			case 2:
 				{
 					system("cls");
-					int arr[]={4, 3, 1, 5, 6};
-					int n=5;
-					cout<<"INTERCAMBIO POR INSERCION BINARIA:"<<endl;
+					int A[]={4, 3, 1, 5, 6};
+					int n = 5;
+					cout<<"INSERCION BINARIA:"<<endl;
 					cout<<"\nArreglo original: "<<endl;
-					insercionBinaria(arr, n);
+					mostrarArreglo(A, n);
 					cout<<endl;	
-					mostrarArreglo(arr,  n);
+					insercionBinaria(A, n);
 					system("pause");					
 					break;					
 				}		
@@ -112,16 +110,10 @@ int main()
 				{
 					cout<<"\nOpcion invalida"<<endl;
 					system("pause");
-					
 				}
 		}
 		cout<<endl;
 		
-	}while(opc!=3);
+	}while(opc != 3);
 	return 0;
-	
-	
 }
-
-
-
